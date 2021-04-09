@@ -6,68 +6,44 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct ContentView: View {
     
     enum sortBy: String {
+        //Sorting through the "popularity" tag
         case popularity = "Popularity"
+        //Sorting through the "vote_average" tag
         case ratings = "Rating"
+        //Sorting through the "release_date" tag
         case general = "Default"
     }
     
     @ObservedObject var movieList = MovieList()
-    @State var pageCount = 1
     @State var showActionSheet = false
     @State var sorting: sortBy = .general
     
     var body: some View {
         NavigationView {
             List {
-                Section(footer:
-                            HStack {
-                                Spacer ()
-                                
-                                ProgressView()
-                                .onAppear(perform: movieList.loadMovies)
-                                
-                                Spacer()
-                            }
-                ) {
+                Section(footer: LoaderView(movieList: movieList)) {
                     ForEach(movieList.movies) {movie in
-                        NavigationLink(
-                            destination: MovieDetailView(movie: movie),
-                            label: {
-                                HStack {
-                                    WebImage(url: URL(string: movie.thumbnailUrlString))
-                                        .resizable()
-                                        .placeholder {
-                                            Rectangle().foregroundColor(.gray)
-                                        }
-                                        .indicator(.activity)
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(height: 75)
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text(movie.name)
-                                            .font(.title3)
-                                        Text(movie.releaseDateFormatted)
-                                            .font(.caption)
-                                    }
-                                }
-                        })
+                        CellView(movie: movie)
                     }
                 }
             }
+            .listStyle(PlainListStyle())
             .navigationTitle("Movies: Now Playing")
             .navigationBarItems(trailing: Button(action: {
                 self.showActionSheet = true
             }, label: {
-                Text("Sort by: \(sorting.rawValue)")
+                HStack(spacing: 1) {
+                    Image(systemName: "arrow.up.arrow.down")
+                    Text("\(sorting.rawValue)")
+                }
             }))
         }
         .actionSheet(isPresented: $showActionSheet) {
-            ActionSheet(title: Text("Sort Movies by"), message: Text("Select a new color"), buttons: [
+            ActionSheet(title: Text("Sort Movies by"), message: nil, buttons: [
                 .default(Text("Default")) {
                     self.sorting = .general
                     self.movieList.movies = self.movieList.movies.sorted()

@@ -12,10 +12,9 @@ class MovieList: ObservableObject {
     
     @Published var movies = [Movie]()
     
-    // Tells if all records have been loaded. (Used to hide/show activity spinner)
-    var movieListFull = false
-    // Tracks last page loaded. Used to load next page (current + 1)
+    // Tracks last page loaded. Used to load next page
     var currentPage = 1
+    // Tracks loading status, multiple calls for the same page are restricted
     var isLoading = false
     
     
@@ -29,8 +28,6 @@ class MovieList: ObservableObject {
         
         if isLoading { return } else { isLoading = true }
         
-        print("loading called")
-        
         URLSession.shared.dataTask(with: request) {[weak self] data, response, error in
 
             guard let data = data else {
@@ -38,20 +35,41 @@ class MovieList: ObservableObject {
                 return
             }
 
-            if let json = try? JSONSerialization.jsonObject(with: data, options: []), let list = json as? [String: Any] {
-                if let myList = try? JSONSerialization.data(withJSONObject: list["results"] ?? [:], options: []) {
-                    if let movieData = try? JSONDecoder().decode([Movie].self, from: myList) {
-                        DispatchQueue.main.async {[weak self] in
-                            self?.movies += movieData.sorted()
-                            self?.currentPage += 1
-                            print("successful response")
-                            self?.isLoading = false
-                        }
-                    }
+            if let result = try? JSONDecoder().decode(Result.self, from: data) {
+                DispatchQueue.main.async {[weak self] in
+                    let newPage = result.results
+                    self?.movies += newPage.sorted()
+                    self?.currentPage += 1
+                    print("successful response")
+                    self?.isLoading = false
                 }
             } else {
                 print("Invalid response from server")
             }
         }.resume()
+    }
+}
+
+class Result: Codable {
+    
+    var page: Int = 0
+    var results = [Movie]()
+    
+    enum CodingKeys: CodingKey {
+        case page, results
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        page = try container.decode(Int.self, forKey: .page)
+        results = try container.decode([Movie].self, forKey: .results)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(page, forKey: .page)
+        try container.encode(results, forKey: .results)
     }
 }

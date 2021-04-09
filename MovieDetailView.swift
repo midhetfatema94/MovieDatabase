@@ -45,7 +45,7 @@ struct MovieDetailView: View {
                             }
                         }
                     }
-                    Text("\(rating) stars")
+                    Text(getRating(value: rating))
                         .font(.caption)
                 }
                 .padding()
@@ -55,6 +55,19 @@ struct MovieDetailView: View {
                 .multilineTextAlignment(.center)
         }
         .padding()
+    }
+    
+    func getRating(value: Double) -> String {
+        let formatter = NumberFormatter()
+        let number = NSNumber(value: value)
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 16
+        
+        if value == 1 {
+            return String("\(formatter.string(from: number) ?? "") star")
+        } else {
+            return String("\(formatter.string(from: number) ?? "") stars")
+        }
     }
 }
 

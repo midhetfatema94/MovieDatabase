@@ -17,6 +17,8 @@
 		6334348126209380006F2893 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334348026209380006F2893 /* MovieDetailView.swift */; };
 		63DE82832620B82200061BF9 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DE82822620B82200061BF9 /* MovieList.swift */; };
 		63DE82872620C67200061BF9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 63DE82862620C67200061BF9 /* SDWebImageSwiftUI */; };
+		63DE828A2620D9BF00061BF9 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DE82892620D9BF00061BF9 /* LoaderView.swift */; };
+		63DE828D2620DA3A00061BF9 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DE828C2620DA3A00061BF9 /* CellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		6334346F261F5090006F2893 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		6334348026209380006F2893 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = SOURCE_ROOT; };
 		63DE82822620B82200061BF9 /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
+		63DE82892620D9BF00061BF9 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		63DE828C2620DA3A00061BF9 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				6334345A261F5021006F2893 /* AppDelegate.swift */,
 				6334345C261F5021006F2893 /* SceneDelegate.swift */,
 				6334345E261F5021006F2893 /* ContentView.swift */,
+				63DE828C2620DA3A00061BF9 /* CellView.swift */,
+				63DE82892620D9BF00061BF9 /* LoaderView.swift */,
 				6334346F261F5090006F2893 /* MovieModel.swift */,
 				63343460261F5024006F2893 /* Assets.xcassets */,
 				63343465261F5024006F2893 /* LaunchScreen.storyboard */,
@@ -165,6 +171,8 @@
 				63DE82832620B82200061BF9 /* MovieList.swift in Sources */,
 				6334348126209380006F2893 /* MovieDetailView.swift in Sources */,
 				63343470261F5090006F2893 /* MovieModel.swift in Sources */,
+				63DE828A2620D9BF00061BF9 /* LoaderView.swift in Sources */,
+				63DE828D2620DA3A00061BF9 /* CellView.swift in Sources */,
 				6334345B261F5021006F2893 /* AppDelegate.swift in Sources */,
 				6334345D261F5021006F2893 /* SceneDelegate.swift in Sources */,
 				6334345F261F5021006F2893 /* ContentView.swift in Sources */,
