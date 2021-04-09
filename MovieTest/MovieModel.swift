@@ -37,7 +37,8 @@ class Movie: Codable, Identifiable, Comparable {
         id = try container.decode(Int.self, forKey: .id)
         name = try container.decode(String.self, forKey: .title)
         thumbnailUrlString = try container.decode(String.self, forKey: .poster_path)
-        rating = try container.decode(Double.self, forKey: .vote_average)
+        let vote = try container.decode(Double.self, forKey: .vote_average)
+        rating = vote/2.0
         synopsis = try container.decode(String.self, forKey: .overview)
         releaseDateString = try container.decode(String.self, forKey: .release_date)
         popularity = try container.decode(Double.self, forKey: .popularity)
@@ -50,6 +51,8 @@ class Movie: Codable, Identifiable, Comparable {
         dateFormatter.dateFormat = "yyyy-mm-dd"
         if let date = dateFormatter.date(from: releaseDateString) {
             releaseDate = date
+            dateFormatter.dateFormat = "DD MMM YYYY"
+            releaseDateFormatted = dateFormatter.string(from: releaseDate)
         }
     }
 

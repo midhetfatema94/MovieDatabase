@@ -12,7 +12,46 @@ struct MovieDetailView: View {
     @State var movie: Movie
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            if let thumbnail = movie.thumbnailImage {
+                Image(uiImage: thumbnail)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 300)
+            }
+            
+            VStack {
+                Text(movie.name)
+                    .font(.title)
+                Text(movie.releaseDateFormatted)
+                    .font(.title3)
+            }
+            .padding()
+            
+            if let rating = movie.rating {
+                VStack {
+                    //Add stars below
+                    HStack {
+                        ForEach(1 ..< 6) {star in
+                            if star <= Int(rating) {
+                                Image(systemName: "star.fill")
+                            } else if Double(star - 1) < rating {
+                                Image(systemName: "star.leadinghalf.fill")
+                            } else {
+                                Image(systemName: "star")
+                            }
+                        }
+                    }
+                    Text("\(rating) stars")
+                        .font(.caption)
+                }
+                .padding()
+            }
+            
+            Text(movie.synopsis)
+                .multilineTextAlignment(.center)
+        }
+        .padding()
     }
 }
 

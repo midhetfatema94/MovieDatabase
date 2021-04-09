@@ -10,8 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State var movies = [Movie]()
-    
-    var pageCount = 1
+    @State var pageCount = 1
     
     var body: some View {
         NavigationView {
@@ -24,13 +23,14 @@ struct ContentView: View {
                                 if let thumbnail = movie.thumbnailImage {
                                     Image(uiImage: thumbnail)
                                         .resizable()
-                                        .frame(width: 50, height: 75)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(height: 75)
                                 }
                                 
                                 VStack(alignment: .leading) {
                                     Text(movie.name)
                                         .font(.title3)
-                                    Text(movie.releaseDateString)
+                                    Text(movie.releaseDateFormatted)
                                         .font(.caption)
                                 }
                             }
@@ -60,6 +60,7 @@ struct ContentView: View {
                 if let myList = try? JSONSerialization.data(withJSONObject: list["results"] ?? [:], options: []) {
                     if let movieData = try? JSONDecoder().decode([Movie].self, from: myList) {
                         self.movies = movieData.sorted()
+                        self.pageCount += 1
                         print("successful response")
                     }
                 }
