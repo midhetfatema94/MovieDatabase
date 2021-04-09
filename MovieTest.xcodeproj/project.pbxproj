@@ -15,6 +15,7 @@
 		63343467261F5024006F2893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63343465261F5024006F2893 /* LaunchScreen.storyboard */; };
 		63343470261F5090006F2893 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334346F261F5090006F2893 /* MovieModel.swift */; };
 		6334348126209380006F2893 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334348026209380006F2893 /* MovieDetailView.swift */; };
+		63DE82832620B82200061BF9 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DE82822620B82200061BF9 /* MovieList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		63343468261F5024006F2893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6334346F261F5090006F2893 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		6334348026209380006F2893 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = SOURCE_ROOT; };
+		63DE82822620B82200061BF9 /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				6334348026209380006F2893 /* MovieDetailView.swift */,
+				63DE82822620B82200061BF9 /* MovieList.swift */,
 				6334345A261F5021006F2893 /* AppDelegate.swift */,
 				6334345C261F5021006F2893 /* SceneDelegate.swift */,
 				6334345E261F5021006F2893 /* ContentView.swift */,
@@ -151,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63DE82832620B82200061BF9 /* MovieList.swift in Sources */,
 				6334348126209380006F2893 /* MovieDetailView.swift in Sources */,
 				63343470261F5090006F2893 /* MovieModel.swift in Sources */,
 				6334345B261F5021006F2893 /* AppDelegate.swift in Sources */,
