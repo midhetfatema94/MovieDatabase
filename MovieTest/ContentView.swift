@@ -9,8 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     
+    enum sortBy: String {
+        case popularity = "Popularity"
+        case ratings = "Rating"
+        case general = "Default"
+    }
+    
     @State var movies = [Movie]()
     @State var pageCount = 1
+    @State var showActionSheet = false
+    @State var sorting: sortBy = .general
     
     var body: some View {
         NavigationView {
@@ -38,8 +46,34 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Movies: Now Playing")
+            .navigationBarItems(trailing: Button(action: {
+                self.showActionSheet = true
+            }, label: {
+                Text("Sort by: \(sorting.rawValue)")
+            }))
         }
         .onAppear(perform: loadMovies)
+        .actionSheet(isPresented: $showActionSheet) {
+            ActionSheet(title: Text("Sort Movies by"), message: Text("Select a new color"), buttons: [
+                .default(Text("Default")) {
+                    self.sorting = .general
+                    self.movies = self.movies.sorted()
+                },
+                .default(Text("Popularity")) {
+                    self.sorting = .popularity
+                    self.movies = self.movies.sorted(by: { (lhs, rhs) -> Bool in
+                        lhs.popularity > rhs.popularity
+                    })
+                },
+                .default(Text("Rating")) {
+                    self.sorting = .ratings
+                    self.movies = self.movies.sorted(by: { (lhs, rhs) -> Bool in
+                        lhs.rating ?? 0 > rhs.rating ?? 0
+                    })
+                },
+                .cancel()
+            ])
+        }
     }
     
     func loadMovies() {
