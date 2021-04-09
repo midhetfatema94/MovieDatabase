@@ -14,6 +14,7 @@
 		63343464261F5024006F2893 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63343463261F5024006F2893 /* Preview Assets.xcassets */; };
 		63343467261F5024006F2893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63343465261F5024006F2893 /* LaunchScreen.storyboard */; };
 		63343470261F5090006F2893 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334346F261F5090006F2893 /* MovieModel.swift */; };
+		6334348126209380006F2893 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334348026209380006F2893 /* MovieDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		63343466261F5024006F2893 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63343468261F5024006F2893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6334346F261F5090006F2893 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		6334348026209380006F2893 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		63343459261F5021006F2893 /* MovieTest */ = {
 			isa = PBXGroup;
 			children = (
+				6334348026209380006F2893 /* MovieDetailView.swift */,
 				6334345A261F5021006F2893 /* AppDelegate.swift */,
 				6334345C261F5021006F2893 /* SceneDelegate.swift */,
 				6334345E261F5021006F2893 /* ContentView.swift */,
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6334348126209380006F2893 /* MovieDetailView.swift in Sources */,
 				63343470261F5090006F2893 /* MovieModel.swift in Sources */,
 				6334345B261F5021006F2893 /* AppDelegate.swift in Sources */,
 				6334345D261F5021006F2893 /* SceneDelegate.swift in Sources */,
