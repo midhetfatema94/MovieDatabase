@@ -15,7 +15,6 @@ class Movie: Codable, Identifiable, Comparable {
     var rating: Double?
     var synopsis: String
     var thumbnailUrlString: String
-    var thumbnailImage: UIImage?
     var releaseDateString = ""
     var releaseDate = Date()
     var releaseDateFormatted = ""
@@ -36,16 +35,14 @@ class Movie: Codable, Identifiable, Comparable {
         
         id = try container.decode(Int.self, forKey: .id)
         name = try container.decode(String.self, forKey: .title)
-        thumbnailUrlString = try container.decode(String.self, forKey: .poster_path)
         let vote = try container.decode(Double.self, forKey: .vote_average)
         rating = vote/2.0
         synopsis = try container.decode(String.self, forKey: .overview)
         releaseDateString = try container.decode(String.self, forKey: .release_date)
         popularity = try container.decode(Double.self, forKey: .popularity)
         
-        if let fileUrl = URL(string: "https://image.tmdb.org/t/p/original\(thumbnailUrlString)"), let imageData = try? Data(contentsOf: fileUrl) {
-            thumbnailImage = UIImage(data: imageData)
-        }
+        let posterEndpoint = try container.decode(String.self, forKey: .poster_path)
+        thumbnailUrlString = "https://image.tmdb.org/t/p/original\(posterEndpoint)"
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-mm-dd"

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		63343470261F5090006F2893 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334346F261F5090006F2893 /* MovieModel.swift */; };
 		6334348126209380006F2893 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334348026209380006F2893 /* MovieDetailView.swift */; };
 		63DE82832620B82200061BF9 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DE82822620B82200061BF9 /* MovieList.swift */; };
+		63DE82872620C67200061BF9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 63DE82862620C67200061BF9 /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63DE82872620C67200061BF9 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +102,9 @@
 			dependencies = (
 			);
 			name = MovieTest;
+			packageProductDependencies = (
+				63DE82862620C67200061BF9 /* SDWebImageSwiftUI */,
+			);
 			productName = MovieTest;
 			productReference = 63343457261F5021006F2893 /* MovieTest.app */;
 			productType = "com.apple.product-type.application";
@@ -127,6 +132,9 @@
 				Base,
 			);
 			mainGroup = 6334344E261F5021006F2893;
+			packageReferences = (
+				63DE82852620C67200061BF9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 63343458261F5021006F2893 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -357,6 +365,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		63DE82852620C67200061BF9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		63DE82862620C67200061BF9 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63DE82852620C67200061BF9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6334344F261F5021006F2893 /* Project object */;
 }

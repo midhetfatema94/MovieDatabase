@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ContentView: View {
     
@@ -38,12 +39,14 @@ struct ContentView: View {
                             destination: MovieDetailView(movie: movie),
                             label: {
                                 HStack {
-                                    if let thumbnail = movie.thumbnailImage {
-                                        Image(uiImage: thumbnail)
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(height: 75)
-                                    }
+                                    WebImage(url: URL(string: movie.thumbnailUrlString))
+                                        .resizable()
+                                        .placeholder {
+                                            Rectangle().foregroundColor(.gray)
+                                        }
+                                        .indicator(.activity)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(height: 75)
                                     
                                     VStack(alignment: .leading) {
                                         Text(movie.name)
