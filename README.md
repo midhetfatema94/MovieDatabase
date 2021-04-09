@@ -2,7 +2,8 @@
 
 This is a basic application in which a list of movies are displayed sorted by their release date. Details of the movie like synopsis, poster etc are also displayed. TMDB API is linked [here](https://developers.themoviedb.org/3/getting-started/introduction)
 
-### Installation
+### Installation (Will Require Xcode v11+)
+Clone or download the project > open `.xcodeproj` > Wait for the dependencies to load (you can check their progress in the organiser tab) > Build and Run
 
 ### Provisions:
 * Sorting can be done by clicking on the top right corner named "Default". 
@@ -10,4 +11,3 @@ This is a basic application in which a list of movies are displayed sorted by th
 * Architechture used is _MVVM_ and the project is written in `Swift and SwiftUI`
 * Dependency is managed by _Swift Package Manager_
 * Library used for image caching and smooth scrolling is `SDWebImageSwiftUI`. You can find the package [here](https://github.com/SDWebImage/SDWebImageSwiftUI)
-
