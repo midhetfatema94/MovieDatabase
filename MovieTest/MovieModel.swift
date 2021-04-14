@@ -44,12 +44,9 @@ class Movie: Codable, Identifiable, Comparable {
         let posterEndpoint = try container.decode(String.self, forKey: .poster_path)
         thumbnailUrlString = "https://image.tmdb.org/t/p/original\(posterEndpoint)"
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-mm-dd"
-        if let date = dateFormatter.date(from: releaseDateString) {
+        if let date = DateFormatterHelper.shared.date(from: releaseDateString, format: "yyyy-mm-dd") {
             releaseDate = date
-            dateFormatter.dateFormat = "DD MMM YYYY"
-            releaseDateFormatted = dateFormatter.string(from: releaseDate)
+            releaseDateFormatted = DateFormatterHelper.shared.string(from: releaseDate, format: "DD MMM YYYY")
         }
     }
 
@@ -71,5 +68,24 @@ class Movie: Codable, Identifiable, Comparable {
 
     static func == (lhs: Movie, rhs: Movie) -> Bool {
         lhs.id == rhs.id
+    }
+}
+
+class DateFormatterHelper {
+    
+    static let shared = DateFormatterHelper()
+    let dateFormatter = DateFormatter()
+    
+    func date(from dateString: String, format: String) -> Date? {
+        dateFormatter.dateFormat = "yyyy-mm-dd"
+        if let date = dateFormatter.date(from: dateString) {
+            return date
+        }
+        return nil
+    }
+    
+    func string(from date: Date, format: String) -> String {
+        dateFormatter.dateFormat = "DD MMM YYYY"
+        return dateFormatter.string(from: date)
     }
 }
